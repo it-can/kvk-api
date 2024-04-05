@@ -45,7 +45,7 @@ class Adres
         ?string  $indAfgeschermd,
         ?string  $volledigAdres,
         ?string  $straatnaam,
-        ?int     $huisnummer,
+        ?string  $huisnummer,
         ?string  $huisnummerToevoeging,
         ?string  $huisletter,
         ?string  $aanduidingBijHuisnummer,
@@ -88,7 +88,7 @@ class Adres
         return $this->straatnaam;
     }
 
-    public function getHuisnummer(): ?int
+    public function getHuisnummer(): ?string
     {
         return $this->huisnummer;
     }

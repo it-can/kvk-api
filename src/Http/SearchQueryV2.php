@@ -21,7 +21,7 @@ class SearchQueryV2 implements QueryInterface
     /** @var string */
     private $straatnaam;
 
-    /** @var int */
+    /** @var string */
     private $huisnummer;
 
     /** @var string */
@@ -74,7 +74,7 @@ class SearchQueryV2 implements QueryInterface
         $this->straatnaam = $straatnaam;
     }
 
-    public function setHuisnummer(int $huisnummer)
+    public function setHuisnummer(string $huisnummer)
     {
         $this->huisnummer = $huisnummer;
     }

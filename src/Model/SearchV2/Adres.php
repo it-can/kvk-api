@@ -23,7 +23,7 @@ class Adres
     public function __construct(
         ?string $type,
         ?string $straatnaam,
-        ?int    $huisnummer,
+        ?string $huisnummer,
         ?string $huisletter,
         ?int    $postbusnummer,
         ?string $postcode,
@@ -48,7 +48,7 @@ class Adres
         return $this->straatnaam;
     }
 
-    public function getHuisnummer(): ?int
+    public function getHuisnummer(): ?string
     {
         return $this->huisnummer;
     }
