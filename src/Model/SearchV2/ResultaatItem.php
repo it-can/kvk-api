@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Appvise\KvkApi\Model\Search;
+namespace Appvise\KvkApi\Model\SearchV2;
 
 use Appvise\KvkApi\Model\Link;
 
@@ -14,9 +14,9 @@ class ResultaatItem
 
     private $vestigingsnummer;
 
-    private $handelsnaam;
+    private $naam;
 
-    private $adresType;
+    private $adres;
 
     private $straatnaam;
 
@@ -41,8 +41,8 @@ class ResultaatItem
         string  $kvkNumber,
         ?string $rsin,
         ?string $vestigingsnummer,
-        ?string $handelsnaam,
-        ?string $adresType,
+        ?string $naam,
+        ?array  $adres,
         ?string $straatnaam,
         ?string $postcode,
         ?string $plaats,
@@ -56,8 +56,8 @@ class ResultaatItem
         $this->kvkNummer = $kvkNumber;
         $this->rsin = $rsin;
         $this->vestigingsnummer = $vestigingsnummer;
-        $this->handelsnaam = $handelsnaam;
-        $this->adresType = $adresType;
+        $this->naam = $naam;
+        $this->adres = $adres;
         $this->straatnaam = $straatnaam;
         $this->plaats = $plaats;
         $this->postcode = $postcode;
@@ -67,14 +67,6 @@ class ResultaatItem
         $this->actief = $actief;
         $this->vervallenNaam = $vervallenNaam;
         $this->links = $links;
-    }
-
-    /**
-     * @deprecated use getKvkNummer()
-     */
-    public function getKvkNumber(): string
-    {
-        return $this->kvkNummer;
     }
 
     public function getKvkNummer(): string
@@ -92,14 +84,32 @@ class ResultaatItem
         return $this->vestigingsnummer;
     }
 
+    /*
+     * @deprecated use getNaam()
+     */
     public function getHandelsnaam(): ?string
     {
-        return $this->handelsnaam;
+        return $this->naam;
     }
 
-    public function getAdresType(): ?string
+    public function getNaam(): ?string
     {
-        return $this->adresType;
+        return $this->naam;
+    }
+
+    public function getAdres(): ?array
+    {
+        return $this->adres;
+    }
+
+    public function getBinnenlandsAdres(): Adres|array
+    {
+        return $this->adres['binnenlandsAdres'] ?? [];
+    }
+
+    public function getBuitenlandsAdres(): Adres|array
+    {
+        return $this->adres['buitenlandsAdres'] ?? [];
     }
 
     public function getStraatnaam(): ?string
@@ -154,12 +164,17 @@ class ResultaatItem
             $linksArray[] = $link->toArray();
         }
 
+        $adresArray = [];
+        foreach ($this->adres as $adres) {
+            $adresArray[] = $adres->toArray();
+        }
+
         return [
             'kvkNummer' => $this->kvkNummer,
             'rsin' => $this->rsin,
             'vestigingsnummer' => $this->vestigingsnummer,
-            'handelsnaam' => $this->handelsnaam,
-            'adresType' => $this->adresType,
+            'naam' => $this->naam,
+            'adres' => $adresArray,
             'straatnaam' => $this->straatnaam,
             'postcode' => $this->postcode,
             'plaats' => $this->plaats,
