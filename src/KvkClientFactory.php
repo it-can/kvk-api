@@ -47,6 +47,8 @@ class KvkClientFactory
             'debug' => false,
             'verify' => $rootCertificate ?? false,
             'handler' => $stack,
+            'timeout' => 10,
+            'connect_timeout' => 3,
         ]);
 
         return new GuzzleClient($client);
