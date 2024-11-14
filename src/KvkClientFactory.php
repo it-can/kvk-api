@@ -41,7 +41,7 @@ class KvkClientFactory
 
         $client = new Client([
             'debug' => false,
-            'verify' => $rootCertificate ?? false,
+            'verify' => $rootCertificate ?: false,
             'handler' => $stack,
             'timeout' => 10,
             'connect_timeout' => 3,
