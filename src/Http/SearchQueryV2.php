@@ -104,7 +104,7 @@ class SearchQueryV2 implements QueryInterface
         $this->type = $type;
     }
 
-    public function setInclusiefinactieveregistraties(bool $inclusiefInactieveRegistraties)
+    public function setInclusiefInactieveRegistraties(bool $inclusiefInactieveRegistraties)
     {
         $this->inclusiefInactieveRegistraties = $inclusiefInactieveRegistraties;
     }
