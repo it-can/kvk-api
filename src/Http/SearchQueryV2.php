@@ -40,7 +40,7 @@ class SearchQueryV2 implements QueryInterface
     private $type;
 
     /** @var bool */
-    private $inclusiefinactieveregistraties;
+    private $inclusiefInactieveRegistraties;
 
     /** @var int */
     private $pagina;
@@ -104,9 +104,9 @@ class SearchQueryV2 implements QueryInterface
         $this->type = $type;
     }
 
-    public function setInclusiefinactieveregistraties(bool $inclusiefinactieveregistraties)
+    public function setInclusiefinactieveregistraties(bool $inclusiefInactieveRegistraties)
     {
-        $this->inclusiefinactieveregistraties = $inclusiefinactieveregistraties;
+        $this->inclusiefInactieveRegistraties = $inclusiefInactieveRegistraties;
     }
 
     public function setPagina(int $pagina)
@@ -132,7 +132,7 @@ class SearchQueryV2 implements QueryInterface
             'postcode' => $this->postcode,
             'plaats' => $this->plaats,
             'type' => $this->type,
-            'inclusiefinactieveregistraties' => $this->inclusiefinactieveregistraties,
+            'inclusiefInactieveRegistraties' => $this->inclusiefInactieveRegistraties,
             'pagina' => $this->pagina,
             'resultatenPerPagina' => $this->resultatenPerPagina,
         ];
