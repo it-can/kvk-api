@@ -123,7 +123,7 @@ class SearchQuery implements QueryInterface
             'huisnummer' => $this->huisnummer,
             'huisnummerToevoeging' => $this->huisnummerToevoeging,
             'type' => $this->type,
-            'inclusiefinactieveregistraties' => $this->inclusiefinactieveregistraties,
+            'InclusiefInactieveRegistraties' => $this->inclusiefinactieveregistraties,
             'pagina' => $this->pagina,
             'aantal' => $this->aantal,
         ];
