@@ -25,7 +25,7 @@ class ResultaatItemFactory extends AbstractFactory
             self::pluckString('type', $response),
             self::pluckString('actief', $response),
             self::pluckString('vervallenNaam', $response),
-            self::extractLinks($response['links']),
+            self::extractLinks($response['links'] ?? []),
         );
     }
 
