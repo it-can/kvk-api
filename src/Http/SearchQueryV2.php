@@ -39,7 +39,7 @@ class SearchQueryV2 implements QueryInterface
     /** @var string */
     private $type;
 
-    /** @var bool */
+    /** @var string */
     private $inclusiefInactieveRegistraties;
 
     /** @var int */
@@ -106,7 +106,7 @@ class SearchQueryV2 implements QueryInterface
 
     public function setInclusiefInactieveRegistraties(bool $inclusiefInactieveRegistraties)
     {
-        $this->inclusiefInactieveRegistraties = $inclusiefInactieveRegistraties;
+        $this->inclusiefInactieveRegistraties = $inclusiefInactieveRegistraties ? 'true' : 'false';
     }
 
     public function setPagina(int $pagina)
