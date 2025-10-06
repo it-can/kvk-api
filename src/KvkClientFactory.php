@@ -34,17 +34,14 @@ class KvkClientFactory
 
     private static function createHttpClient(string $userKey, ?string $rootCertificate = null): ClientInterface
     {
-        $stack = HandlerStack::create();
-        $stack->unshift(Middleware::mapRequest(function (RequestInterface $request) use ($userKey) {
-            return $request->withUri(Uri::withQueryValue($request->getUri(), 'user_key', $userKey));
-        }));
-
         $client = new Client([
             'debug' => false,
             'verify' => $rootCertificate ?: false,
-            'handler' => $stack,
             'timeout' => 10,
             'connect_timeout' => 3,
+            'headers' => [
+                'apikey' => $userKey,
+            ],
         ]);
 
         return new GuzzleClient($client);
